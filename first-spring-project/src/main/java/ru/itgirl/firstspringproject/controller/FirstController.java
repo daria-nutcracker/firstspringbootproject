@@ -7,34 +7,28 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FirstController {
 
+    enum DayOfWeek {WonderfulDay, MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY, SATURDAY, SUNDAY}
     @GetMapping("/dayOfWeek")
-    public String hello(@RequestParam(value = "name", defaultValue = "чудесный день") String name) {
-        String rus_name = name;
+    public String hello(@RequestParam(value = "name", defaultValue = "WonderfulDay") DayOfWeek name) {
         switch (name) {
-            case "MONDAY":
-                rus_name = "понедельник";
-                break;
-            case "TUESDAY":
-                rus_name = "вторник";
-                break;
-            case "WEDNESDAY":
-                rus_name = "среда";
-                break;
-            case "THURSDAY":
-                rus_name = "четверг";
-                break;
-            case "FRIDAY":
-                rus_name = "пятница";
-                break;
-            case "SATURDAY":
-                rus_name = "суббота";
-                break;
-            case "SUNDAY":
-                rus_name = "воскресенье";
-                break;
-
+            case MONDAY:
+                return "Сегодня понедельник!";
+            case TUESDAY:
+                return "Сегодня вторник!";
+            case WEDNESDAY:
+                return "Сегодня среда!";
+            case THURSDAY:
+                return "Сегодня четверг!";
+            case FRIDAY:
+                return "Сегодня пятница!";
+            case SATURDAY:
+                return "Сегодня суббота!";
+            case SUNDAY:
+                return "Сегодня воскресенье!";
+            default:
+                return ("Сегодня чудесный день!");
         }
-        return String.format("Сегодня %s!", rus_name);
+
     }
 
 }
